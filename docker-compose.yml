@@ -9,3 +9,11 @@ services:
     volumes:
       - /app/node_modules  # Creates an anonymous volume for node_modules
       - .:/app  # Bind mounts the current directory to /app in the container
+  tests:
+    build: # Instructions to build the Docker image
+      context: .  # Specifies the build context (current directory)
+      dockerfile: Dockerfile.dev  # Use the same Dockerfile as for the 'my-react' service
+    volumes:
+      - /app/node_modules  # Creates an anonymous volume for node_modules
+      - .:/app  # Bind mounts the current directory to /app in the container
+    command: [ "pnpm", "test" ]  # Override the default command to run tests
