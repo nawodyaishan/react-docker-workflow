@@ -2,7 +2,7 @@
 FROM node:18-alpine3.17
 
 # Set environment variables for PNPM's installation location and update PATH
-ENV PNPM_HOME="/pnpm"
+ENV PNPM_HOME="/pnpm" 
 ENV PATH="$PNPM_HOME:$PATH"
 
 # Enable Corepack to manage package managers like pnpm, yarn, etc.
