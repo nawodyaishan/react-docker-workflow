@@ -20,3 +20,7 @@ script:
   # '-e CI=true' sets an environment variable 'CI' to 'true' inside the container.
   # This is a common practice to ensure certain behaviors in CI environments.
   # 'pnpm test' is the command executed inside the container to run the tests.
+deploy:
+  provider: gae
+  keyfile: "SERVICE ACCOUNT JSON FILE"
+  project: "PROJECT ID"
