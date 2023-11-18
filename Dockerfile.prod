@@ -1,8 +1,9 @@
+# Stage 1: Node.js build environment
 # Use a specific version of node on Alpine Linux as the base image
 FROM node:18-alpine3.17 as builder
 
 # Set environment variables for PNPM's installation location and update PATH
-ENV PNPM_HOME="/pnpm" 
+ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 # Enable Corepack to manage package managers like pnpm, yarn, etc.
@@ -20,14 +21,15 @@ RUN pnpm install --prod
 # Copy the rest of the application's code into the container
 COPY . .
 
-# Define the command to run the application when the container starts
+# Build the application - this command is for building the app and will be used if this image is run standalone
 CMD ["pnpm","build"]
 
+# Stage 2: NGINX to serve the built application
 # Use the official NGINX image as a parent image
 FROM nginx:alpine
 
-# Copy build directory to nginx host directory
+# Copy built application from the 'builder' stage to NGINX host directory
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose port 80
+# Expose port 80 on which NGINX listens
 EXPOSE 80
