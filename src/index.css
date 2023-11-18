@@ -71,3 +71,47 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 }
+
+.app {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+.workflow-stage {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.workflow-stage h2 {
+    color: #4caf50;
+}
+
+.workflow-stage p {
+    color: #ccc;
+}
+
+.navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4caf50;
+}
+
