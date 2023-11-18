@@ -1,0 +1,22 @@
+# This line indicates that sudo privileges are required for the build
+sudo: required
+
+# Specifies the services that Travis CI will use. In this case, Docker is required
+services:
+  - docker
+
+# 'before_install' section contains steps to be executed before the installation step.
+# These commands are executed before the script commands are run.
+before_install:
+  - docker build -t nawodyaishan/react-dev-workflow:latest -f Dockerfile.dev .
+  # Builds a Docker image using Dockerfile.dev and tags it with the specified name.
+  # 'nawodyaishan/react-dev-workflow:latest' is the tag given to the built image.
+
+# 'script' section contains the list of commands to be executed to run the test.
+# If any of the commands in the script section fail, Travis CI will consider the build to be failed.
+script:
+  - docker run -e CI=true nawodyaishan/react-dev-workflow pnpm test
+  # Runs the Docker container from the image built in the 'before_install' step.
+  # '-e CI=true' sets an environment variable 'CI' to 'true' inside the container.
+  # This is a common practice to ensure certain behaviors in CI environments.
+  # 'pnpm test' is the command executed inside the container to run the tests.
