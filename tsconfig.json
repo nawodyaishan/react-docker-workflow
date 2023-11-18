@@ -31,5 +31,9 @@
     {
       "path": "./tsconfig.node.json"
     }
+  ],
+  "types": [
+    "jest",
+    "@testing-library/jest-dom"
   ]
 }

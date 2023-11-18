@@ -1,0 +1,11 @@
+version: "3"  # Specifies the version of the Docker Compose file format
+services:
+  my-react:
+    build: # Instructions to build the Docker image
+      context: .  # Specifies the build context (current directory)
+      dockerfile: Dockerfile.dev  # Points to the Dockerfile used for building the image
+    ports:
+      - "3000:3000"  # Maps port 3000 of the container to port 3000 of the host
+    volumes:
+      - /app/node_modules  # Creates an anonymous volume for node_modules
+      - .:/app  # Bind mounts the current directory to /app in the container
