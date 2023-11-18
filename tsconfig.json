@@ -33,7 +33,6 @@
     }
   ],
   "types": [
-    "jest",
-    "@testing-library/jest-dom"
+    "jest"
   ]
 }
