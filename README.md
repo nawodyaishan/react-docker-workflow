@@ -1,24 +1,47 @@
 # React Docker Workflow
 [![Build Status](https://app.travis-ci.com/nawodyaishan/react-docker-workflow.svg?token=DKf3NVCcwz23mmxUx9nn&branch=main)](https://app.travis-ci.com/nawodyaishan/react-docker-workflow)
 
+---
+This project is a React application configured for Docker-based development and production workflows, integrated with Travis CI for continuous integration and deployment.
 
-`react-docker-workflow` is a React-based project configured for both development and production environments using Docker. It includes a robust testing setup with Jest and leverages Vite for an enhanced development experience.
+### Getting Started
 
-### Features
+Clone the repository and navigate to the project directory.
 
-- React 18 setup.
-- Dockerized environment for consistency across development and production.
-- Integrated testing with Jest.
-- TypeScript support for robust type-checking.
-- ESLint for code quality.
-- Vite for fast development build.
+### Development Setup
 
-## File Structure
+- **Running the Development Server**:
+  ```bash
+  docker-compose up my-react
+  ```
+
+- **Running Tests**:
+  ```bash
+  docker-compose up tests
+  ```
+
+### Production Build
+
+- **Building the Production Docker Image**:
+  ```bash
+  docker build -t react-docker-workflow-prod:latest -f Dockerfile .
+  ```
+
+- **Running the Production Container**:
+  ```bash
+  docker run -p 8080:80 react-docker-workflow-prod
+  ```
+
+### Travis CI Configuration
+
+The project is configured for continuous integration with Travis CI, building and testing the Dockerized application.
+
+### Project Structure
 
 ```
 .
-├── Dockerfile (Production build)
-├── Dockerfile.dev (Development build)
+├── Dockerfile
+├── Dockerfile.dev
 ├── README.md
 ├── app.yaml
 ├── docker-compose.yml
@@ -53,56 +76,14 @@
 └── vite.config.ts
 ```
 
-## Development Setup
+### Vite Configuration
 
-1. **Install Dependencies**:
-   ```
-   pnpm install
-   ```
+Configured with Vite for an optimized development experience.
 
-2. **Start Development Server**:
-   ```
-   pnpm dev
-   ```
+### Docker Compose
 
-3. **Run Tests**:
-   ```
-   pnpm test
-   ```
+The `docker-compose.yml` file is set up to facilitate both development and testing environments.
 
-4. **Linting**:
-   ```
-   pnpm lint
-   ```
+### Continuous Integration and Deployment
 
-## Docker Setup
-
-### Development
-
-- **Build and Run with Docker Compose**:
-   ```
-   docker-compose up
-   ```
-- This will build and run the development environment, accessible on `localhost:3000`.
-
-### Production
-
-- **Building the Docker Image**:
-   ```
-   docker build -t react-docker-workflow:latest -f Dockerfile .
-   ```
-- **Running the Container**:
-   ```
-   docker run -p 8080:80 react-docker-workflow:latest
-   ```
-- The production build will be accessible on `localhost:8080`.
-
-## Configuration Files
-
-- `vite.config.ts`: Configuration for Vite.
-- `Dockerfile` and `Dockerfile.dev`: Docker configurations for production and development.
-- `docker-compose.yml`: Docker Compose setup for development and test environments.
-
-## Testing
-
-The project includes a testing setup using Jest. Tests can be found in the `__tests__` directory and are configured via `jest.config.ts`.
+Travis CI is used for continuous integration, running tests in Docker containers, and deploying to Google App Engine.
